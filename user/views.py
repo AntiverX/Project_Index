@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -15,9 +16,20 @@ def register(request):
         return HttpResponseRedirect(request, 'user/register.html')
 
 
-def login(request):
-    # TODO 登录界面
-    ...
+def auth(request):
+    context = {}
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect("/")
+        else:
+            context['error'] = "用户名或密码错误"
+            return render(request, "error.html", context=context)
+    else:
+        return render(request, 'user/login.html')
 
 
 def index(request):
