@@ -19,5 +19,5 @@ import main_site.views as  main_site
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('/', main_site.index),
+    path('', main_site.index),
 ]
