@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 
 
-# Create your views here.
 def register(request):
     if request.method == "POST":
         new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'], group_name=request.POST['group_name'])
@@ -13,7 +12,7 @@ def register(request):
         login(request, new_user)
         return render(reverse('index'))
     else:
-        return HttpResponseRedirect(request, 'user/register.html')
+        return render(request, 'user/register.html')
 
 
 def auth(request):

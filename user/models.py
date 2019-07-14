@@ -62,6 +62,8 @@ class User(AbstractBaseUser):
             'Unselect this instead of deleting accounts.'
         ),
     )
+    # 姓名
+    name = models.TextField()
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = UserManager()
