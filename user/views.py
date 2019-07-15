@@ -3,9 +3,9 @@ from .models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
 def register(request):
     if request.method == "POST":
         new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'], group_name=request.POST['group_name'])
@@ -13,7 +13,7 @@ def register(request):
         login(request, new_user)
         return render(reverse('index'))
     else:
-        return HttpResponseRedirect(request, 'user/register.html')
+        return render(request, 'user/register.html')
 
 
 def auth(request):
@@ -32,6 +32,7 @@ def auth(request):
         return render(request, 'user/login.html')
 
 
+@login_required
 def index(request):
-    # TODO 显示用户自己的相关信息
-    ...
+    # 显示用户的相关信息
+    return render(request, 'user/index.html')

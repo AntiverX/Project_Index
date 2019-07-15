@@ -1,0 +1,63 @@
+{% extends 'template.html' %}
+
+{% block content %}
+
+    <style>
+        form {
+            width: 40vw;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">用户名</span>
+            </div>
+            <input type="text" class="form-control" value="{{ user.username }}" readonly>
+        </div>
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">邮箱</span>
+            </div>
+            <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">密码</span>
+            </div>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">确认密码</span>
+            </div>
+            <input type="password" class="form-control" name="password_comfirm" required>
+        </div>
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">组别</span>
+            </div>
+            <input type="text" class="form-control" name="group" value="{{ user.group }}" required>
+        </div>
+
+        <div class="md-form input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">姓名</span>
+            </div>
+            <input type="text" class="form-control" name="name" value="{{ user.name }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="">保存</button>
+    </form>
+{% endblock %}

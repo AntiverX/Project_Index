@@ -1,0 +1,24 @@
+{% extends 'template.html' %}
+
+{% block content %}
+
+    <style>
+        .search {
+            width: 40vw;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <!-- search -->
+    <div class="search">
+        <div class="md-form " id="search_content">
+            <input class="form-control " type="text" placeholder="搜索文献" aria-label="Search">
+        </div>
+    </div>
+    <!--end for search-->
+
+
+{% endblock %}

@@ -25,8 +25,7 @@ SECRET_KEY = 'd$(!*u+y1c8=@ifyu)y#2+rpprd%fgzyh2zo^ng+)w&7)6(03n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'paper.apps.PaperConfig',
+    'main_site',
+    'user',
+    'graph',
 ]
 
 MIDDLEWARE = [
@@ -74,10 +76,22 @@ WSGI_APPLICATION = 'Project_Index.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# this is the default database settings
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'paper',
+        'USER': 'root',
+        'PASSWORD': 'wang@85#2',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -119,6 +133,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+AUTH_USER_MODEL = "user.User"

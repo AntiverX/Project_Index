@@ -63,3 +63,8 @@ class ThesisPaper(BasePaper):
         verbose_name_plural = verbose_name
         get_latest_by = 'id'
         db_table = 'paper_thesis'
+
+
+class Publication(models.Model):
+    # TODO 期刊会议等
+    ...
