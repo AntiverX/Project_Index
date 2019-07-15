@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    <label for="PaperType">文献类型</label>
+    <select id="PaperType" name="PaperType">
+        <option value="" selected disabled style="display: none;">选择文献类型
+        </option>
+        <option value="journal">期刊</option>
+        <option value="conference">会议</option>
+        <option value="thesis">学位</option>
+    </select>
+    <div id="Paper">
+        <h3>请先选择文献类型</h3>
+    </div>
+    <input id="submit" type="submit" value="创建" disabled/>
+</form>
+</body>
+
+<script>
+  let select = $("#PaperType");
+  select.change(function () {
+    let type = select.val();
+    let div = $('#Paper');
+    let sub = $('#submit');
+
+    switch (type) {
+      case "journal":
+        div.html(`{{ jpf.as_p }}`);
+        sub.removeAttr("disabled");
+        break;
+      case "conference":
+        div.html(`{{ cpf.as_p }}`);
+        sub.removeAttr("disabled");
+        break;
+      case "thesis":
+        div.html(`{{ tpf.as_p }}`);
+        sub.removeAttr("disabled");
+        break;
+      default:
+        div.html(`<h3>请先选择文献类型</h3>`);
+        sub.attr("disabled", true)
+    }
+  })
+</script>
+
+</html>
