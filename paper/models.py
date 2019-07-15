@@ -7,6 +7,6 @@ class Paper(models.Model):
     ...
 
 
-class Comment(models.Model):
-    # TODO 用户对论文的评论
+class Publication(models.Model):
+    # TODO 期刊会议等
     ...
