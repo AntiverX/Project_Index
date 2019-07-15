@@ -1,9 +1,8 @@
-from pprint import pprint
-
-from django.shortcuts import render, redirect
-from django.views.generic.base import View
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.generic.base import View
 
 from . import forms
 
@@ -19,7 +18,9 @@ def upload(request):
     ...
 
 
+@method_decorator(login_required, name='dispatch')
 class CreateView(View):
+    """"""
     # TODO(2019年7月15日 10:56:58)@men: 添加文件上传
     def get(self, request):
         jpf = forms.JournalPaperForm()
@@ -41,9 +42,6 @@ class CreateView(View):
         else:
             paper_form = None
 
-        print(type(paper_form))
-        pprint(paper_form)
-
         if paper_form and paper_form.is_valid():
             try:
                 paper_form.save()
@@ -62,6 +60,7 @@ def statistics(request):
 
 
 class DetailView(View):
+    """"""
     def get(self, request):
         pass
 
