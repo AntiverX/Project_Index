@@ -3,6 +3,7 @@ from .models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -31,6 +32,7 @@ def auth(request):
         return render(request, 'user/login.html')
 
 
+@login_required
 def index(request):
     # 显示用户的相关信息
     return render(request, 'user/index.html')
