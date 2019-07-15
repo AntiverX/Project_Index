@@ -32,5 +32,5 @@ def auth(request):
 
 
 def index(request):
-    # TODO 显示用户自己的相关信息
-    ...
+    # 显示用户的相关信息
+    return render(request, 'user/index.html')

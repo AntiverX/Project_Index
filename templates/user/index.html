@@ -20,14 +20,14 @@
             <div class="input-group-prepend">
                 <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">用户名</span>
             </div>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" value="{{ user.username }}" readonly>
         </div>
 
         <div class="md-form input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">邮箱</span>
             </div>
-            <input type="email" class="form-control" name="email" required>
+            <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
         </div>
 
         <div class="md-form input-group mb-3">
@@ -48,16 +48,16 @@
             <div class="input-group-prepend">
                 <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">组别</span>
             </div>
-            <input type="text" class="form-control" name="group" required>
+            <input type="text" class="form-control" name="group" value="{{ user.group }}" required>
         </div>
 
         <div class="md-form input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text md-addon" id="inputGroupMaterial-sizing-default">姓名</span>
             </div>
-            <input type="text" class="form-control" name="name" required>
+            <input type="text" class="form-control" name="name" value="{{ user.name }}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="">注册</button>
+        <button type="submit" class="btn btn-primary" style="">保存</button>
     </form>
 {% endblock %}
