@@ -19,4 +19,3 @@
 
 # TODO List
 
-1. 后端换成MySQL
